@@ -1,9 +1,13 @@
 # Baton
 
+<p align="center">
+  <img src="docs/logo/v3-wordmark.jpg" alt="Baton" width="280" />
+</p>
+
 **Hit Claude limit? `baton go codex` — keep working.**
 额度撞线？一条命令换 Codex 接着写，任务不丢。
 
-![Baton demo: status → handoff → go codex](docs/demo.gif)
+![Baton demo: status → handoff → go codex](docs/demo-amber.gif)
 
 ```bash
 npx agent-baton init      # installs a statusline + Stop/PreCompact hooks (backs up first)
