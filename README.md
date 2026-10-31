@@ -11,6 +11,8 @@ baton status              # 5-hour AND weekly (7d) usage
 baton go codex            # hand the task to Codex now, with HANDOFF.md + git context
 ```
 
+**Repo:** [github.com/duyaoyao2020/agent-baton](https://github.com/duyaoyao2020/agent-baton) (`main`)
+
 ## Why Baton (3 things)
 
 1. **Switch vendor now, don't wait for the reset.** Retry tools resume the *same* Claude session after the window resets. Baton hands the task to **another vendor** right away: `baton go codex`. The handoff is a plain `HANDOFF.md` at your repo root (Goal / Done / Decisions / Rejected / Next / Open questions + git context) that you can read and edit.
