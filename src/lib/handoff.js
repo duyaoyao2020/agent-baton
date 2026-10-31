@@ -33,6 +33,7 @@ export function writeHandoff(opts = {}) {
     git,
     goal: opts.goal,
     status: opts.status,
+    triggeredBy: opts.triggeredBy,
     noRedact: opts.noRedact,
     transcript: summarizeTranscript(transcriptPath),
   };

@@ -18,6 +18,13 @@ export function fmtQuota(rl) {
   return parts.join(', ') || 'unknown';
 }
 
+export function quotaFields(rl, explicit) {
+  const f = (w) => (w && Number.isFinite(w.used_percentage) ? Math.round(w.used_percentage) : 'unknown');
+  const a = rl?.five_hour?.used_percentage ?? -1, b = rl?.seven_day?.used_percentage ?? -1;
+  let trig = explicit || (Math.max(a, b) >= 100 ? 'hard_limit' : b > a ? '7d' : a >= 0 ? '5h' : 'manual');
+  return { quota_at_5h: f(rl?.five_hour), quota_at_7d: f(rl?.seven_day), triggered_by: trig };
+}
+
 export function gitBlock(g) {
   if (!g || !g.isRepo) return '_Not a git repository — no git context._';
   const fence = (s) => '```text\n' + (s && s.trim() ? s.trim() : '(empty)') + '\n```';
@@ -55,6 +62,7 @@ export function renderHandoff(ctx) {
     created_at: new Date().toISOString(),
     quota_at: fmtQuota(ctx.rateLimits),
     status: ctx.status || 'skeleton',
+    ...quotaFields(ctx.rateLimits, ctx.triggeredBy),
     goal,
     done,
     decisions: TODO,
@@ -80,6 +88,7 @@ export function refreshHandoff(existing, ctx) {
     if (ctx.from) set('from', ctx.from);
     if (ctx.to) set('to', ctx.to);
     set('quota_at', fmtQuota(ctx.rateLimits));
+    for (const [k, v] of Object.entries(quotaFields(ctx.rateLimits, ctx.triggeredBy))) set(k, v);
     set('updated_at', new Date().toISOString());
     if (!/^updated_at:/m.test(s)) s = s.replace(/^(created_at:.*)$/m, `$1\nupdated_at: ${new Date().toISOString()}`);
   }

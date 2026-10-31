@@ -13,7 +13,7 @@ export async function run(args) {
   const res = writeHandoff({
     cwd: process.cwd(), from: args.from || 'claude', to: args.to || cfg.to, goal: args.goal,
     rateLimits: state?.rate_limits, force: args.force, noRedact: args.redact === false,
-    dryRun: args.print, status: 'manual',
+    dryRun: args.print, status: 'manual', triggeredBy: 'manual',
   });
   if (args.print) { process.stdout.write(res.content); return 0; }
   if (res.action === 'skipped') { log(warn(res.reason)); return 1; }

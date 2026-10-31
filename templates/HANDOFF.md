@@ -4,6 +4,9 @@ from: {{from}}
 to: {{to}}
 created_at: {{created_at}}
 quota_at: {{quota_at}}
+quota_at_5h: {{quota_at_5h}}
+quota_at_7d: {{quota_at_7d}}
+triggered_by: {{triggered_by}}
 status: {{status}}
 ---
 

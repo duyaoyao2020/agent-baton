@@ -2,8 +2,12 @@
 baton_version: 0.1.0
 from: claude
 to: codex
-created_at: 2026-10-31T11:18:26.340Z
-quota_at: 5h 85%, 7d 42%
+created_at: 2026-10-31T11:20:00.202Z
+updated_at: 2026-10-31T11:20:00.322Z
+quota_at: 5h 100%, 7d 55%
+quota_at_5h: 100
+quota_at_7d: 55
+triggered_by: manual
 status: manual
 ---
 
@@ -46,10 +50,11 @@ _(auto-extracted from the first prompt — please verify)_
 - _(to fill)_
 
 ## Files
-- `src/commands/go.js`
+- `src/commands/handoff.js`
+- `src/hooks/stop.js`
 - `src/lib/handoff-template.js`
 - `src/lib/handoff.js`
-- `src/lib/transcript.js`
+- `templates/HANDOFF.md`
 
 ## Next
 - _(to fill)_
@@ -64,23 +69,28 @@ Branch: `master`
 **git status**
 ```text
 ## master
- M src/commands/go.js
+ M HANDOFF.md
+ M src/commands/handoff.js
+ M src/hooks/stop.js
  M src/lib/handoff-template.js
  M src/lib/handoff.js
- M src/lib/transcript.js
+ M templates/HANDOFF.md
 ```
 
 **git diff HEAD --stat**
 ```text
-src/commands/go.js          | 8 +++-----
- src/lib/handoff-template.js | 2 +-
- src/lib/handoff.js          | 6 +++---
- src/lib/transcript.js       | 4 ++--
- 4 files changed, 9 insertions(+), 11 deletions(-)
+HANDOFF.md                  | 29 +++++++++++++++++++----------
+ src/commands/handoff.js     |  2 +-
+ src/hooks/stop.js           |  1 +
+ src/lib/handoff-template.js |  9 +++++++++
+ src/lib/handoff.js          |  1 +
+ templates/HANDOFF.md        |  3 +++
+ 6 files changed, 34 insertions(+), 11 deletions(-)
 ```
 
 **last 5 commits**
 ```text
+fc936c3 2026-10-31 Baton MVP: tests, README (vendor-switch positioning), MVP_STATUS
 32247c5 2026-10-31 Baton MVP scaffold: CLI, hooks, redaction, docs
 ```
 <!-- baton:auto:end -->
