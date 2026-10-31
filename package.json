@@ -1,0 +1,15 @@
+{
+  "name": "agent-baton",
+  "version": "0.1.0",
+  "description": "Baton — when Claude Code nears its quota, a HANDOFF.md is already written; one command and Codex picks up the task.",
+  "type": "module",
+  "bin": { "baton": "bin/baton.js" },
+  "files": ["bin", "src", "templates", "README.md", "LICENSE"],
+  "engines": { "node": ">=18" },
+  "scripts": {
+    "test": "node --test test/"
+  },
+  "keywords": ["claude-code", "codex", "handoff", "rate-limit", "quota", "cli", "agent"],
+  "license": "MIT",
+  "author": "Baton contributors"
+}
