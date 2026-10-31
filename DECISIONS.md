@@ -67,3 +67,10 @@ ZH: 看板只提醒；同 CLI 工具多半等重置；Baton 带着仓库里的�
 
 ## 演示
 - 2026-10-31：NUC 录制 docs/demo.gif（fixture→handoff→go --print）PASS；真 spawn/真撞线未做。
+
+## 叙事修订（2026-11-01 · Anthropic Ultra）
+- 官方确认：已验证 **Ultra**（原 Max 20x，$200）**取消 5 小时限额**；周限额不变。Max 5x→Max（$100），Max 20x→Ultra。
+- 来源：https://x.com/claudeai/status/2116220869479428500
+- **Show HN / 落地页 / 小红书**：勿再把 Ultra 当「5h 撞线」痛点画像。
+- 主叙事压在：**周额度（7d）+ 跨厂商 Claude↔Codex + Pro/Max（及未验证 Ultra）仍有 5h**。
+- 产品仍读 5h+7d；statusline 双窗保留；只改对外话术与人群优先级。

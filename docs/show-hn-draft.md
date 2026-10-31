@@ -27,7 +27,7 @@ Hi HN —
 
 I'm building **Baton** (`npx agent-baton` → CLI command `baton`).
 
-**Problem.** I run Claude Code and Codex side by side. When the 5-hour Claude window fills up, I either wait, upgrade, or paste context into another CLI and lose the thread. Ask HN threads (and my own nights) keep hitting the same wall: switching harnesses without losing the *task*.
+**Problem.** I run Claude Code and Codex side by side. Claude's **weekly** cap (and, on Pro/Max, the 5-hour window) still stops a session cold — Anthropic's verified Ultra dropped the 5h limit, but weekly remains. I either wait, upgrade, or paste context into another CLI and lose the thread. The wall is switching harnesses without losing the *task*.
 
 **What Baton does (MVP, local-only):**
 
@@ -36,14 +36,14 @@ I'm building **Baton** (`npx agent-baton` → CLI command `baton`).
 3. `baton go codex` (or `claude` / `cursor`) composes that handoff + `git diff --stat` into the first prompt and launches the target CLI.
 
 Try: `npx agent-baton init` then `baton status` / `baton go codex`  
-Repo: *(public URL TBD — 梦梦连好 GitHub 后填)*  
-Demo GIF: *(README 首屏 30s 真终端)*
+Repo: https://github.com/duyaoyao2020/agent-baton  
+Demo GIF: README 首屏（琥珀版 `docs/demo-amber.gif`）
 
 ### How this is different (the only three lines that matter) — 修订版
 
 1. **Cross-vendor, now** — `baton go codex` (or Kimi/Qwen later) keeps you coding in *another* CLI instead of sleeping until reset (unlike same-CLI resume tools).
 2. **Handoff lives in the repo as readable markdown** you can audit; we don't ship raw transcripts to a cloud memory product.
-3. **Windows is a first-class path**, and we watch **weekly + 5h** limits (platform rules just shifted toward weekly caps).
+3. **Windows is a first-class path**, and we watch **weekly first + 5h** (Ultra verified accounts no longer have a 5h cliff; Pro/Max still do).
 
 *(Note: auto-writing HANDOFF near the limit is no longer unique — say so honestly if asked.)*
 
