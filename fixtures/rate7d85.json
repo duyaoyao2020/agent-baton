@@ -1,0 +1,8 @@
+{
+  "baton_fixture": "rate7d85",
+  "source": "synthetic",
+  "rate_limits": {
+    "five_hour": { "used_percentage": 20, "resets_at": "2026-10-31T22:00:00+08:00" },
+    "seven_day": { "used_percentage": 87, "resets_at": "2026-11-03T00:00:00+08:00" }
+  }
+}

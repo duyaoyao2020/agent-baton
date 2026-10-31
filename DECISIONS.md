@@ -64,3 +64,6 @@ ZH: 看板只提醒；同 CLI 工具多半等重置；Baton 带着仓库里的�
 - 主卖点改为 **跨厂商 `baton go`**，不以「自动写 HANDOFF」为差异（agent-limit-retry 已有）。
 - Windows 对标基线：先测 agent-limit-retry + Beacon MSI，再测 Baton（见 `docs/acceptance-windows.md` §0）。
 - 真实接力 = 跨到另一家 CLI；≥3 次才准备 Show HN。
+
+## 演示
+- 2026-10-31：NUC 录制 docs/demo.gif（fixture→handoff→go --print）PASS；真 spawn/真撞线未做。

@@ -3,6 +3,8 @@
 **Hit Claude limit? `baton go codex` — keep working.**
 额度撞线？一条命令换 Codex 接着写，任务不丢。
 
+![Baton demo: status → handoff → go codex](docs/demo.gif)
+
 ```bash
 npx agent-baton init      # installs a statusline + Stop/PreCompact hooks (backs up first)
 baton status              # 5-hour AND weekly (7d) usage
