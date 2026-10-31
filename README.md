@@ -19,17 +19,17 @@ baton go codex            # hand the task to Codex now, with HANDOFF.md + git co
 
 ## Why Baton (3 things)
 
-1. **Switch vendor now, don't wait for the reset.** Retry tools resume the *same* Claude session after the window resets. Baton hands the task to **another vendor** right away: `baton go codex`. The handoff is a plain `HANDOFF.md` at your repo root (Goal / Done / Decisions / Rejected / Next / Open questions + git context) that you can read and edit.
-2. **Windows + 中文 first-class.** Hooks and statusline are pure Node (no bash one-liners), paths via `os.homedir()`, no `shell:true`. Messages are calm: 「快到线了，交接单已备好」.
-3. **Watches the weekly (7d) quota, not only the 5-hour window.** When the weekly window is the tight one, waiting a few hours won't help — switching will.
+1. **Weekly (7d) quota is the real wall — switch vendor when it bites.** Anthropic's verified **Ultra** ($200, ex-Max 20x) no longer has a 5-hour session limit; **weekly limits remain**. Pro / Max (and unverified Ultra) still hit 5h. When the week is the tight window, waiting a few hours won't help — `baton go codex` will. Source: [Claude.ai, 2026-10-31](https://x.com/claudeai/status/2116220869479428500).
+2. **Cross-vendor now, not same-CLI retry after reset.** Retry tools resume the *same* Claude after the window resets. Baton hands the task to **another vendor** right away. The handoff is a plain `HANDOFF.md` at your repo root (Goal / Done / Decisions / Rejected / Next / Open questions + git context) that you can read and edit. Best fit: dual-sub users (Claude + Codex) and non-Ultra plans.
+3. **Windows + 中文 first-class.** Hooks and statusline are pure Node (no bash one-liners), paths via `os.homedir()`, no `shell:true`. Messages are calm: 「快到线了，交接单已备好」.
 
-When either window reaches 85% (configurable), Baton writes a skeleton `HANDOFF.md` at the end of Claude's turn and asks Claude once to fill in the human parts.
+When either window reaches 85% (configurable), Baton writes a skeleton `HANDOFF.md` at the end of Claude's turn and asks Claude once to fill in the human parts. **Do not pitch Ultra users on a 5h cliff** — pitch weekly + cross-vendor.
 
 ## 中文速览
 
-- **现在就换厂商**：不是等额度重置后回到同一个 Claude，而是 `baton go codex` 立刻接力。
+- **主打周额度（7d）+ 跨厂商**：已验证 Ultra 取消 5 小时限额，周限额仍在；Pro/Max 仍有 5h。周额度见底时，等几小时没用，换 Codex 才有用。
+- **现在就换厂商**：不是等额度重置后回到同一个 Claude，而是 `baton go codex` 立刻接力（双订阅 / 非 Ultra 画像更准）。
 - **Windows + 中文**：纯 Node 钩子，Windows 可用；提示语冷静不吓人。
-- **看周额度（7d）**：不只盯 5 小时窗口；周额度见底时，等重置没用，换手才有用。
 - 交接单 `HANDOFF.md` 就在仓库根目录，人能看、能改、能审。
 
 ## Commands

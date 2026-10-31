@@ -71,3 +71,6 @@ CTA 旁小字：`npx agent-baton init` · MIT 核心开源 · 与 Anthropic / Op
 | FAQ | Why weekly? Provider plans just shifted; weekly limits are the new wall for heavy users. | 套餐规则在变，重度用户更常撞的是周额度 |
 
 首屏可加小字：`5h + weekly · local-only`
+
+## 2026-11-01 Ultra 注意
+已验证 Ultra 无 5h 限额；首屏痛点句优先周额度 / 双订阅跨厂商，勿写「Ultra 五小时见底」。
