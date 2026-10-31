@@ -18,7 +18,7 @@ export const help = `baton go <codex|claude|cursor> [--print|--dry-run] [--no-re
 
 const TARGETS = ['codex', 'claude', 'cursor'];
 
-export function buildPrompt(handoff, git, target) {
+export function buildPrompt(handoff, git, target, { withGit = false } = {}) {
   return [
     `You are ${target === 'claude' ? 'Claude Code' : target === 'codex' ? 'Codex' : 'the coding agent'}, taking over a coding task through Baton.`,
     'The previous agent paused (usually because its usage limit is close). Its handoff is below; the same file is HANDOFF.md at the repo root.',
@@ -32,9 +32,7 @@ export function buildPrompt(handoff, git, target) {
     '----- HANDOFF.md -----',
     handoff.trim(),
     '----- end HANDOFF.md -----',
-    '',
-    '----- current git context -----',
-    gitBlock(git),
+    ...(withGit ? ['', '----- current git context -----', gitBlock(git)] : []),
   ].join('\n');
 }
 
@@ -62,7 +60,7 @@ export async function run(args) {
   // Make sure there is a handoff (in --print mode, render it in memory only).
   const res = writeHandoff({ cwd: process.cwd(), from: args.from || 'claude', to: target, rateLimits: state?.rate_limits, dryRun: dry, status: fs.existsSync(file) ? undefined : 'go-skeleton' });
   const handoff = res.action === 'skipped' || dry ? res.content : fs.readFileSync(file, 'utf8');
-  let prompt = buildPrompt(handoff, git, target);
+  let prompt = buildPrompt(handoff, git, target, { withGit: res.action === 'skipped' });
   if (args.redact !== false) prompt = redact(prompt);
 
   const bin = target === 'cursor' ? null : which(target);

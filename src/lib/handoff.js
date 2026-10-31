@@ -42,14 +42,14 @@ export function writeHandoff(opts = {}) {
     if (!hasAutoBlock(cur)) {
       return { file, action: 'skipped', reason: 'HANDOFF.md exists and was not written by Baton (use --force to replace; old copy goes to ~/.baton/history)', content: cur };
     }
-    archive(file, 'pre-refresh');
+    if (!opts.dryRun && opts.archiveRefresh !== false) archive(file, 'pre-refresh');
     const next = refreshHandoff(cur, ctx);
     if (!opts.dryRun) fs.writeFileSync(file, next);
     return { file, action: 'refreshed', content: next };
   }
-  if (exists) archive(file, 'pre-overwrite');
+  if (exists && !opts.dryRun) archive(file, 'pre-overwrite');
   const content = renderHandoff(ctx);
   if (!opts.dryRun) fs.writeFileSync(file, content);
-  archive(file, 'snapshot');
+  if (!opts.dryRun) archive(file, 'snapshot');
   return { file, action: exists ? 'overwritten' : 'created', content };
 }

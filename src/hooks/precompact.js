@@ -17,7 +17,7 @@ safeMain(async () => {
   const over = hot && hot.pct >= cfg.threshold;
   const res = writeHandoff({
     cwd, from: 'claude', to: cfg.to, rateLimits: state?.rate_limits,
-    transcriptPath: input.transcript_path, status: over ? 'auto-skeleton' : 'precompact-snapshot', dryRun: !over,
+    transcriptPath: input.transcript_path, archiveRefresh: false, status: over ? 'auto-skeleton' : 'precompact-snapshot', dryRun: !over,
   });
   if (!over) {
     fs.writeFileSync(path.join(ensureDir(p.history()), `${tsName()}-precompact-HANDOFF.md`), res.content);

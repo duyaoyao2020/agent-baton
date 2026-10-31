@@ -56,13 +56,13 @@ export function summarizeTranscript(file, { maxBytes = 4 * 1024 * 1024 } = {}) {
 }
 
 /** Claude stores transcripts in ~/.claude/projects/<cwd with non-alnum → '-'>/<session>.jsonl */
-export function latestTranscriptFor(cwd) {
+export function latestTranscriptFor(cwd, maxAgeMs = 12 * 3600 * 1000) {
   try {
     const dir = path.join(p.claudeProjects(), path.resolve(cwd).replace(/[^A-Za-z0-9]/g, '-'));
     const files = fs.readdirSync(dir).filter((f) => f.endsWith('.jsonl'))
       .map((f) => ({ f: path.join(dir, f), m: fs.statSync(path.join(dir, f)).mtimeMs }))
       .sort((a, b) => b.m - a.m);
-    return files[0]?.f || null;
+    return files[0] && Date.now() - files[0].m < maxAgeMs ? files[0].f : null;
   } catch {
     return null;
   }

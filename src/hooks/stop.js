@@ -31,7 +31,7 @@ safeMain(async () => {
 
   const res = writeHandoff({
     cwd, from: 'claude', to: cfg.to, rateLimits: state.rate_limits,
-    transcriptPath: input.transcript_path, status: 'auto-skeleton',
+    transcriptPath: input.transcript_path, archiveRefresh: false, status: 'auto-skeleton',
   });
   if (!state.fixture) {
     handoffs[key] = { at: new Date().toISOString(), file: res.file, action: res.action };

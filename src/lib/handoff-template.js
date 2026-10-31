@@ -43,7 +43,7 @@ export function renderHandoff(ctx) {
   const tpl = fs.readFileSync(p.template(), 'utf8');
   const t = ctx.transcript || {};
   const goal = ctx.goal
-    || (t.firstUser ? `${clip(t.firstUser, 500)}\n\n_(auto-extracted from the first prompt — please verify)_` : TODO);
+    || (t.firstUser ? `> ${clip(t.firstUser, 500).replace(/\n/g, '\n> ')}\n\n_(auto-extracted from the first prompt — please verify)_` : TODO);
   const done = t.lastAssistant ? `- Latest agent note (auto, verify):\n\n> ${clip(t.lastAssistant, 800).replace(/\n/g, '\n> ')}` : TODO;
   const next = t.lastUser && t.lastUser !== t.firstUser ? `- Last request (auto, verify): ${clip(t.lastUser, 400).replace(/\n/g, ' ')}` : TODO;
   const files = [...new Set([...(ctx.git?.files || []), ...(t.files || []).map((f) => (ctx.git?.root ? path.relative(ctx.git.root, f) : f))])]
