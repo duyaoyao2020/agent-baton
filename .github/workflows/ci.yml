@@ -1,0 +1,49 @@
+# Unit tests on GitHub-hosted runners.
+# windows-latest is the required signal. This workflow does not verify a
+# real Windows machine; that checklist stays in docs/acceptance-windows.md.
+
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: test (${{ matrix.os }}, node 20)
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [windows-latest, ubuntu-latest]
+    steps:
+      # Git for Windows defaults to core.autocrlf=true. Keep the checkout as LF
+      # so fixture bytes match the repo.
+      - name: Keep LF line endings
+        if: runner.os == 'Windows'
+        run: git config --global core.autocrlf false
+
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Unit tests
+        run: npm test
+
+      # No Claude Code or Codex install. --print does not spawn a CLI or write HANDOFF.md.
+      - name: Fixture smoke
+        shell: bash
+        run: |
+          node bin/baton.js status --fixture fixtures/rate85.json
+          node bin/baton.js go codex --print
