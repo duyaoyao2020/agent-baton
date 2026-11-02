@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { p, PKG_ROOT, claudeDir, codexDir, ensureDir, readJson, writeJson, VERSION, batonHome } from '../lib/paths.js';
+import { readJsonStrict } from '../lib/json.js';
 import { createBackup, finalizeBackup, loadInstall, saveInstall, loadManifest } from '../lib/backup.js';
 import * as claudeHooks from '../lib/hooks-claude.js';
 import * as codexHooks from '../lib/hooks-codex.js';
@@ -20,17 +21,6 @@ function copyRuntime() {
   fs.copyFileSync(path.join(PKG_ROOT, 'package.json'), path.join(dest, 'package.json'));
   fs.cpSync(path.join(PKG_ROOT, 'templates'), path.join(dest, 'templates'), { recursive: true });
   return dest;
-}
-
-function readJsonStrict(file) {
-  if (!fs.existsSync(file)) return {};
-  const raw = fs.readFileSync(file, 'utf8');
-  if (!raw.trim()) return {};
-  try {
-    return JSON.parse(raw);
-  } catch (e) {
-    throw new Error(`${file} is not valid JSON (${e.message}). Baton won't touch it — fix it first.`);
-  }
 }
 
 export async function run(args) {

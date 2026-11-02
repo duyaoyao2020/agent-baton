@@ -37,5 +37,8 @@ export async function main(argv) {
   const mod = await import(`./commands/${cmd}.js`);
   const args = parseArgs(rest, { strings: STRINGS, booleans: BOOLEANS });
   if (args.help) { process.stdout.write(mod.help + '\n'); return 0; }
-  return mod.run(args);
+  const result = await mod.run(args);
+  const code = typeof result === 'number' ? result : 0;
+  process.exitCode = code;
+  return code;
 }

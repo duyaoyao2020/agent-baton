@@ -44,6 +44,8 @@ When either window reaches 85% (configurable), Baton writes a skeleton `HANDOFF.
 | `baton remove [--force]` | Restore your original config. If you edited it after init, shows a diff and refuses unless `--force`. Never deletes `HANDOFF.md`. |
 | `baton redact --check FILE` | Exit 1 if likely secrets remain. |
 
+Windows console: PowerShell 5.1 often garbles `✗` and `—`. Windows Terminal, or a UTF-8 code page (`chcp 65001`), shows them correctly.
+
 ## What Baton does NOT do / 不做什么
 
 - It does **not** raise or bypass any limit. 不提额、不绕限。

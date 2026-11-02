@@ -2,6 +2,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { p, readJson, writeJson } from './paths.js';
+import { parseJson } from './json.js';
 
 export const DEFAULT_THRESHOLD = 85;
 export const STALE_MS = 15 * 60 * 1000;
@@ -38,7 +39,7 @@ export function normalizeRateLimits(rl) {
 
 export function loadFixture(file) {
   const abs = path.resolve(file);
-  const j = JSON.parse(fs.readFileSync(abs, 'utf8'));
+  const j = parseJson(fs.readFileSync(abs, 'utf8'));
   return {
     source: `fixture:${path.basename(abs)}`,
     updated_at: new Date().toISOString(),

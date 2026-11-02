@@ -3,12 +3,13 @@ import os from 'node:os';
 import path from 'node:path';
 import fs from 'node:fs';
 import { fileURLToPath } from 'node:url';
+import { parseJson } from './json.js';
 
 export const PKG_ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', '..');
 
 export function readPkg() {
   try {
-    return JSON.parse(fs.readFileSync(path.join(PKG_ROOT, 'package.json'), 'utf8'));
+    return parseJson(fs.readFileSync(path.join(PKG_ROOT, 'package.json'), 'utf8'));
   } catch {
     return { name: 'agent-baton', version: '0.0.0' };
   }
@@ -58,7 +59,7 @@ export function tsName(d = new Date()) {
 
 export function readJson(file, fallback = undefined) {
   try {
-    return JSON.parse(fs.readFileSync(file, 'utf8'));
+    return parseJson(fs.readFileSync(file, 'utf8'));
   } catch {
     return fallback;
   }

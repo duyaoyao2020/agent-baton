@@ -1,0 +1,17 @@
+# LF on checkout, including Git for Windows (core.autocrlf=true).
+# A CRLF HANDOFF template mixes with the LF the renderer inserts.
+# Redaction goldens are compared byte-for-byte. JS shebangs and shell
+# scripts break when a checkout rewrites them as CRLF.
+templates/HANDOFF.md text eol=lf
+templates/** text eol=lf
+testdata/** text eol=lf
+*.sh text eol=lf
+*.js text eol=lf
+*.mjs text eol=lf
+*.cjs text eol=lf
+
+*.jpg binary
+*.gif binary
+*.png binary
+*.webp binary
+*.ico binary

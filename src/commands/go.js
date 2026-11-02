@@ -70,6 +70,9 @@ export async function run(args) {
     process.stdout.write(prompt + '\n');
     process.stdout.write(`\n# baton go ${target} --print: would run → ${shownCmd}\n`);
     if (!fs.existsSync(file)) process.stdout.write('# (HANDOFF.md does not exist yet; it would be written first)\n');
+    if (target !== 'cursor' && !bin) {
+      process.stdout.write(`# \`${target}\` is not on PATH — nothing would be started. ${installHint(target)}\n`);
+    }
     return 0;
   }
 
