@@ -9,7 +9,7 @@ import { log, ok, warn, no, bold, dim } from '../lib/ui.js';
 
 export const help = `baton doctor [--fixture <file>]
   Check node, claude/codex on PATH + versions, hooks installed, runtime + template, backup manifest,
-  and quota state freshness. Exit 0 = ready for Claude → Codex handoff.`;
+  and quota state freshness. Exit 0 = ready for Claude → Codex handoff. Exit 1 when a check failed.`;
 
 export async function run(args) {
   let bad = 0;

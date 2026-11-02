@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { p, readJson, writeJson, tsName } from '../lib/paths.js';
+import { parseJson } from '../lib/json.js';
 import { loadInstall, loadManifest, sha256File, lineDiff } from '../lib/backup.js';
 import * as claudeHooks from '../lib/hooks-claude.js';
 import * as codexHooks from '../lib/hooks-codex.js';
@@ -42,7 +43,7 @@ export async function run(args) {
       const keep = path.join(inst.backup_dir, `${path.basename(e.path)}.user-edited-${tsName()}`);
       fs.copyFileSync(e.path, keep);
       let parsed = null;
-      try { parsed = JSON.parse(fs.readFileSync(e.path, 'utf8')); } catch { /* fallthrough */ }
+      try { parsed = parseJson(fs.readFileSync(e.path, 'utf8')); } catch { /* fallthrough */ }
       if (parsed) {
         const stripped = e.path === p.codexHooks() ? codexHooks.strip(parsed) : claudeHooks.strip(parsed, cfg.chainStatusLine);
         writeJson(e.path, stripped);

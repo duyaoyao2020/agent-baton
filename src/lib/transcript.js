@@ -2,6 +2,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { p } from './paths.js';
+import { parseJson } from './json.js';
 
 function textOf(content) {
   if (typeof content === 'string') return content;
@@ -29,7 +30,7 @@ export function summarizeTranscript(file, { maxBytes = 4 * 1024 * 1024 } = {}) {
     for (const line of buf.toString('utf8').split('\n')) {
       if (!line.trim()) continue;
       let j;
-      try { j = JSON.parse(line); } catch { continue; }
+      try { j = parseJson(line); } catch { continue; }
       const msg = j.message || {};
       if (j.type === 'user' && !j.isMeta) {
         const t = textOf(msg.content);
