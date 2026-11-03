@@ -42,8 +42,8 @@ Demo GIF: README 首屏（琥珀版 `docs/demo-amber.gif`）
 ### How this is different (the only three lines that matter) — 修订版
 
 1. **Cross-vendor, now** — `baton go codex` (or Kimi/Qwen later) keeps you coding in *another* CLI instead of sleeping until reset (unlike same-CLI resume tools).
-2. **Handoff lives in the repo as readable markdown** you can audit; we don't ship raw transcripts to a cloud memory product.
-3. **Windows is a first-class path**, and we watch **weekly first + 5h** (Ultra verified accounts no longer have a 5h cliff; Pro/Max still do).
+2. **Not a memory bank — a relay baton.** The handoff is a readable `HANDOFF.md` in the repo (goal, decisions, next steps). Zero account, no endpoint, no cloud knowledge layer. We do not ship the raw transcript.
+3. **Windows, macOS, and Linux**, Chinese docs in the README, and we watch **weekly first + 5h** (Ultra verified accounts no longer have a 5h cliff; Pro/Max still do).
 
 *(Note: auto-writing HANDOFF near the limit is no longer unique — say so honestly if asked.)*
 
@@ -68,7 +68,7 @@ Claude Code 五小时额度见底时，我要么干等，要么升配，要么�
 
 **Baton**：额度到约 85% 时，用官方 hooks 让当前 agent 在仓库里写好结构化 `HANDOFF.md`，再 `baton go codex` 一条命令接着干。本地运行；不提高额度、不轮换账号、不碰 OAuth。
 
-和「额度看板」的差别：看板只提醒；我们做提醒之后那一步。和「会话续写」类工具的差别：撞线前自动写单 + 仓库内可审 markdown + Windows 同级支持。
+和「额度看板」的差别：看板只提醒；我们做提醒之后那一步。和「记忆层」的差别：不是共享记忆库（端点、账号、云），是撞线瞬间的本地接力棒。Windows、macOS、Linux 都能跑。
 
 安装：`npx agent-baton init`（公开仓链接待补）
 

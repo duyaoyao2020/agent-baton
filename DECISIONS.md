@@ -74,3 +74,16 @@ ZH: 看板只提醒；同 CLI 工具多半等重置；Baton 带着仓库里的�
 - **Show HN / 落地页 / 小红书**：勿再把 Ultra 当「5h 撞线」痛点画像。
 - 主叙事压在：**周额度（7d）+ 跨厂商 Claude↔Codex + Pro/Max（及未验证 Ultra）仍有 5h**。
 - 产品仍读 5h+7d；statusline 双窗保留；只改对外话术与人群优先级。
+
+## 叙事修订（2026-11-03 · 接力棒 vs 记忆层）
+
+Beacon 类产品占住了「撞线后换工具、不用重讲项目」这句话。对外用**类别对比**，不点名攻击，不写对方 star / 融资 / 排名。
+
+**README 首屏：**
+- 主句：**不是记忆库，是接力棒。** / **Not a memory bank — a relay baton.**
+- Baton：零账号、`npx`、撞线瞬间 `baton go`、周额度、中文文档与提示、Windows / macOS / Linux。
+- 记忆层类：共享记忆、装端点 + 注册、云 / 定价。
+- 「无损接力」= 任务（目标 / 决定 / 下一步）还在；原始对话不搬进记忆库。这条诚实边界保留。
+- Windows 是三个支持平台之一，不再当唯一差异。
+
+CLI `--help` 仍用行动句 `baton go codex — keep working`（与首屏 CTA 一致），本次不改产品代码。

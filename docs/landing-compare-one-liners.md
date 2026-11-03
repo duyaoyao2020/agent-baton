@@ -23,7 +23,7 @@
 | 核心动作 | 告诉你快没了 / 该减速 | 事后挑会话、`continue`、云备份 | **≥85% 自动写 `HANDOFF.md` → `baton go <cli>`** |
 | 时机 | 提醒时你还要自己决定下一步 | 多在撞线后手动触发 | **撞线前自动准备** |
 | 交接物 | 无（或让 agent「自己控速」） | 会话记录 / 备份包 | **仓库内可审的结构化 markdown** |
-| Windows | 菜单栏类多为 macOS | 视产品 | **CLI 跨平台，Windows 一等公民** |
+| 平台 | 菜单栏类多为 macOS | 视产品 | **Windows / macOS / Linux** |
 | 云 / 隐私 | 多为本地 | 部分含云同步 | **默认全本地；不上传对话** |
 | 一句话定位 | Reminder | Continue / archive | **Auto handoff at the limit** |
 
@@ -74,3 +74,12 @@ CTA 旁小字：`npx agent-baton init` · MIT 核心开源 · 与 Anthropic / Op
 
 ## 2026-11-01 Ultra 注意
 已验证 Ultra 无 5h 限额；首屏痛点句优先周额度 / 双订阅跨厂商，勿写「Ultra 五小时见底」。
+
+## 2026-11-03 修订（接力棒 vs 记忆层）
+
+首屏主句：**不是记忆库，是接力棒。** / **Not a memory bank — a relay baton.**
+
+- Baton：零账号、`npx`、`baton go`、周额度、中文、Windows / macOS / Linux。
+- 记忆层类：共享记忆、端点 + 注册、云 / 定价。类别对比即可；不点名攻击、不写对方数据。
+- 对比表平台行改为「Windows / macOS / Linux」。Windows 是支持平台，不是唯一差异。
+- 「额度撞线，无损接力」仍配半句：任务还在（目标、决定、下一步）；原始对话不搬家。
